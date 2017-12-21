@@ -1,0 +1,75 @@
+<html>
+
+	<title>Check Answer</title>
+	
+	<body>
+	
+		<center>
+		<h1>Enter the Correct Number</h1>
+		
+		<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+		if(!empty($_POST['num1']))
+			$num1 = $_POST['num1'];
+		else
+			$error[] = "num1 is not entered.";
+		if(!empty($_POST['num2']))
+			$num2 = $_POST['num2'];
+		else
+			$error[] = "num2 is not entered.";
+		if(!empty($error))
+			foreach($error as $msg) { 
+				echo $msg;
+				echo '<br>';
+				}
+		$guess = $_POST['guess'];
+		$op = $_POST['op'];
+		
+		if($op == '+')
+			$result = $num1 + $num2;
+		else if($op == '-')
+			$result = $num1 - $num2;
+		else if($op == '*')
+			$result = $num1 * $num2;
+		else if($op == '/')
+			$result = $num1 / $num2;
+		
+		if($guess == $result)
+			echo 'RIGHT!';
+		else
+			echo 'WRONG!';
+		}
+		?>
+		<br>
+		<br>
+		<form action="", method= "post">
+			<input type= "number" name= "num1" value = <?php if(isset($_POST['num1'])) echo $num1;
+				else echo rand(1,100);
+				 ?>>
+			<br><br> 
+			<p>
+				<select name = "op">
+					<option value = "+"> + </option>
+					<option value = "-"> - </option>
+					<option value = "*"> * </option>
+					<option value = "/"> / </option>
+				</select>
+			</p>
+			<br><br>
+			<input type= "number" name= "num2" value = <?php if(isset($_POST['num2'])) echo $num2;
+			else echo rand(1,100);
+			 ?>>
+			<br>
+			<br>
+			<p> = </p>
+			<input type = "number" name = "guess" 
+				value = <?php if (isset($_POST['guess'])) echo $guess ?>>
+			<br>
+			<br>
+			<input type= "submit" value= "Submit">
+			</center>
+		</form>
+		
+	</body>
+	
+</html>

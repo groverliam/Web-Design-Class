@@ -1,0 +1,70 @@
+<!-SignupLogin.php>
+<html>
+
+	<title>Sign Up</title>
+	
+	<body>
+	
+		<center>
+		<h1>Sign Up</h1>
+		
+		<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+		$servername = "localhost";
+		$username = "root";
+		$password = "root";
+		$dbname = "REG";
+
+		if(!empty($_POST['uname']))
+			$uname = $_POST['uname'];
+		else
+			$error[] = "Username is not entered.";
+		if(!empty($_POST['fname']))
+			$fname = $_POST['fname'];
+		else
+			$error[] = "First name is not entered.";
+		if(!empty($_POST['lname']))
+			$lname = $_POST['lname'];
+		else
+			$error[] = "Last name is not entered.";
+		if(!empty($error))
+			foreach($error as $msg) { 
+				echo $msg;
+				echo '<br>';
+				}
+				// Create connection
+		$conn = new mysqli($servername, $username, $password, $dbname);
+
+		// Check connection
+		if ($conn->connect_error) {
+   			die("Connection failed: " . $conn->connect_error);
+		} 
+
+		$sql = "INSERT INTO MyGuests (firstname, lastname, email)
+		VALUES ('John', 'Doe', 'john@example.com')";
+
+		if ($conn->query($sql) === TRUE) {
+    		echo "New record created successfully";
+		} else {
+  			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+
+		$conn->close();
+
+		}
+		
+		?>
+		<br>
+		<br>
+		<form action="", method= "post">
+			<p> User name:</p>
+  				<p> <input type = "text" name = "uname">
+			<br><br> 
+			<input type= "submit" value= "Submit">
+			</center>
+		</form>
+		
+	</body>
+	
+</html>

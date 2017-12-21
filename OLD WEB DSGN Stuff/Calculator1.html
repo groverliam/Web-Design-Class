@@ -1,0 +1,29 @@
+<!-Calculator1.php>
+<html>
+
+	<title>Calculator1</title>
+	
+	<body>
+	
+		<center>
+		<h1>A Simple Calculator</h1>
+		
+		<?php
+		$num1 = $_POST['num1'];
+		$num2 = $_POST['num2'];
+		echo $num1 + $num2;
+		?>
+		
+		<form action="", method= "post">
+			<input type= "number" name= "num1">
+			<br><br> + <br><br>
+			<input type= "number" name= "num2">
+			<br>
+			<br>
+			<input type= "submit" value= "ADD">
+			</center>
+		</form>
+		
+	</body>
+	
+</html>

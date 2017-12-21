@@ -1,0 +1,130 @@
+<html>
+	<head>
+		<title>Student Information</title>
+	</head>
+	
+	<body>
+		<h1><center>Input Your Info</center></h1>
+		<br>
+		<br>
+		
+		<?php
+			//produce a drop-down menu (HTML SELECT Tag)
+			function dropdown($array, $name, $value){
+				// $array -- array name
+				// $name -- the field name
+				echo '<select name='.$name.'>';
+					
+				foreach($array as $ar){
+					echo '<option value="'.$ar.'"';
+					if($ar == $value) echo 'selected="selected"';
+							echo '>' .$ar.'</option>';
+				}
+				
+				echo '</select>';							
+			}
+			?>
+		
+		<?php	
+			if ($_SERVER['REQUEST_METHOD'] == 'POST') {		
+				$fname = $_POST['firstname'];
+				$lname = $_POST['lastname'];
+				$op	= $_POST['op'];
+				
+				$error = array();
+				
+				/*if (!empty($_POST['num1']))
+					$num1 = $_POST['num1'];
+				else
+					$error[] = "num1 is not entered.";
+					
+				if (!empty($_POST['num2']))
+					$num2 = $_POST['num2'];
+				else
+					$error[] = "num2 is not entered.";		
+					
+				if (empty($error)){
+					$op = $_POST['op'];
+					
+					if ($op == '+') $result = $num1 + $num2;
+					elseif ($op == '-') $result = $num1 - $num2;
+					elseif ($op == '*') $result = $num1 * $num2;
+					else $result = $num1 / $num2;	
+				}
+				else {
+					foreach ($error as $msg){
+						echo $msg;
+						echo '<br>';
+					}
+				}*/
+				
+			}
+		?>
+		
+		<center>
+		<form action = "" method = "post">
+			<table>
+			<tr>
+			<td> First Name: </td>
+			<td><input type = "text" name = "firstname" 
+				value = <?php if (isset($_POST['firstname'])) echo $fname ?>></td></tr>
+			<tr>
+			<td> Last Name: </td>
+			<td><input type = "text" name = "lastname" 
+				value = <?php if (isset($_POST['lastname'])) echo $lname ?>></td></tr>
+			
+			<tr>
+			<td> Major: </td>
+			<td><?php
+				$operator = array(" ","Software Engineering");
+				
+				dropdown($operator, "op", $_POST['op']);  //rop-down menu. Approach 3.
+				
+				/* drop-down menu. Approach 2.
+				echo '<select name = "op">';
+				foreach($operator as $e){
+					echo '<option value = "'.$e.'"';
+					if(isset($_POST['op']) && ($op == $e)) echo 'selected="selected"';
+					echo '>'.$e;
+					echo '</option>';
+				}
+						
+				echo '</select>';
+				*/		
+			?></td></tr>
+	
+			<!-- drop-down menu. Approach 1.
+			<select name = "op">
+				<option value = "+" 
+					<?php if(isset($_POST['op']) && ($op == "+")) echo 'selected="selected"' ?> 
+					>+ 
+				</option>
+				<option value = "-"
+					<?php if(isset($_POST['op']) && ($op == "-")) echo 'selected="selected"' ?> 
+					>-
+				</option>
+				<option value = "*"
+					<?php if(isset($_POST['op']) && ($op == "*")) echo 'selected="selected"' ?> 
+					> * </option>	
+				<option value = "/"
+					<?php if(isset($_POST['op']) && ($op == "/")) echo 'selected="selected"' ?> 
+					> / </option>
+			</select>	
+			-->	
+			</p>
+			<p>
+			<input type = "number" name = "num2" 
+				value = <?php if (isset($_POST['num2'])) echo $num2 ?>>
+			</p>
+			<p> = </p>
+			<p>
+			<input 
+				value = <?php if (isset($result)) echo $result ?>>
+			</p>
+			<input type = "submit" value = "Calculate">
+		</form>
+		</center>
+	</body>
+</html>
+			
+		

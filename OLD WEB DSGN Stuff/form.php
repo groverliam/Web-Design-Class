@@ -1,0 +1,27 @@
+<!- form.php>
+<html>
+	<head>
+		<title>Form Processing</title>
+	</head>
+	<body>
+	<?php
+		$fname = $_POST['firstname'];		
+		$lname = $_POST['lastname'];
+		$gender = $_POST['gender'];
+		$email = $_POST['useremail'];
+		$age = $_POST['age'];
+		
+		echo $fname;
+		echo '<br>';
+		echo $lname;
+		echo '<br>';
+		echo $gender;
+		echo '<br>';
+		echo $email;
+		echo '<br>';
+		echo $age;
+		
+	?>
+	</body>
+</html>	
+			

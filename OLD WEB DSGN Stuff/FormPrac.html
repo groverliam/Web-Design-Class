@@ -1,0 +1,40 @@
+
+<html lang="en">
+<head>
+	
+	<title>Form Page</title>
+	
+</head>
+<body>
+
+<form action = "form.php",method= "post">
+	<table>
+	    <tr>
+	    	<td>First name:</td>
+	    	<td><input type="text" name="firstname"></td>
+	    </tr>
+	    <tr>
+    		<td>Last name:</td>
+    		<td><input type="text" name="lastname"></td>
+    	</tr>
+    	<tr>
+	    	<td>Gender:</td>
+	    	<td><input type="radio" name="gender" value="male"> Male
+			<input type="radio" name="gender" value="female"> Female
+			<input type="radio" name="gender" value="other"> Other</td>
+		</tr>
+		<tr>
+			<td>Age:</td>
+			<td><input type="number" name="age" min="18" max="30"></td>
+		</tr>
+		<tr>
+			<td>E-mail:</td>
+			<td><input type="email" name="email"></td>
+		</tr>
+	</table>
+    <input type="submit" value="Submit">
+    
+</form>
+
+</body>
+</html>
